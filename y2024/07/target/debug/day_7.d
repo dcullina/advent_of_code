@@ -1,0 +1,1 @@
+/Users/dylan/Documents/Projects/AdventOfCode/y2024/07/target/debug/day_7: /Users/dylan/Documents/Projects/AdventOfCode/y2024/07/input.txt /Users/dylan/Documents/Projects/AdventOfCode/y2024/07/src/lib.rs /Users/dylan/Documents/Projects/AdventOfCode/y2024/07/src/main.rs
