@@ -13,4 +13,9 @@ mod tests {
         let test_input: &str = include_str!("../test_input.txt");
         assert_eq!(part_two(test_input), 11387);
     }
+
+    #[test]
+    fn test_concat() {
+        assert_eq!(concat_numbers(47, 531), 47531);
+    }
 }
