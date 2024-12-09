@@ -5,6 +5,4 @@ fn main() {
 
     println!("Part One: {:?}", part_one(input));
     println!("Part Two: {:?}", part_two(input));
-    // part_one(input);
-    // part_two(input);
 }
