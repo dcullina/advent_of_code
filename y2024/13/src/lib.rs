@@ -1,4 +1,4 @@
-use core::num;
+const PART_TWO_OFFSET: usize = 10000000000000;
 
 pub fn part_one(input: &str) -> usize {
     let machines: Vec<Vec<(usize,usize)>> = input
@@ -56,5 +56,34 @@ fn check_division(numerator: isize, denominator: isize) -> Option<isize> {
 }
 
 pub fn part_two(input: &str) -> usize {
-    1
+    let machines: Vec<Vec<(usize,usize)>> = input
+        .split("\n\n")
+        .map(|machine| {
+            machine
+                .lines()
+                .enumerate()
+                .map(|(index, command)| {
+                    if index == 2 {
+                        let split_command: Vec<&str> = command.split(&['=', ','][..]).collect();
+                        (
+                            split_command[1].parse::<usize>().unwrap() + PART_TWO_OFFSET,
+                            split_command[3].parse::<usize>().unwrap() + PART_TWO_OFFSET
+                        )
+                    } else {
+                        let split_command: Vec<&str> = command.split(&['+', ','][..]).collect();
+                        (
+                            split_command[1].parse::<usize>().unwrap(),
+                            split_command[3].parse::<usize>().unwrap()
+                        )
+                    }
+                })
+                .collect()
+        })
+        .collect();
+
+    machines.iter()
+        .map(|machine| {
+            calculate_cost(machine)
+        })
+        .sum()
 }
