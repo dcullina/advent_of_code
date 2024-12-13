@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashSet;
 use rayon::prelude::*;
 
 pub fn part_one(input: &str) -> usize {
@@ -150,7 +150,6 @@ fn dfs_p2(map: &Vec<Vec<usize>>, row_index: usize, col_index: usize, level: usiz
             sum += dfs_p2(map, row_index, new_col_index, next_level);
         }
     }
-
 
     sum
 }
