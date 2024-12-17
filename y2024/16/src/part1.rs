@@ -1,13 +1,15 @@
 use std::usize::MAX;
 
-enum Direction {
+#[derive(PartialEq)]
+pub enum Direction {
     North,
     East,
     South,
     West
 }
 
-enum Object {
+#[derive(PartialEq)]
+pub enum Object {
     EmptySpace,
     Wall,
     Start,
@@ -51,9 +53,9 @@ pub fn part_one(input: &str) -> usize {
     score_grid[end_pos.0][end_pos.1]
 }
 
-fn dfs_explore(grid: &Vec<Vec<Object>>,score_grid: &mut Vec<Vec<usize>>, current_position: &(usize, usize), direction: &Direction) {
+pub fn dfs_explore(grid: &Vec<Vec<Object>>,score_grid: &mut Vec<Vec<usize>>, current_position: &(usize, usize), direction: &Direction) {
     // move north
-    let up: (usize, usize) = get_next_coord(current_position, Direction::North);
+    let up: (usize, usize) = get_next_coord(current_position, &Direction::North);
     match grid[up.0][up.1] {
         Object::EmptySpace => {
             match direction {
@@ -80,7 +82,7 @@ fn dfs_explore(grid: &Vec<Vec<Object>>,score_grid: &mut Vec<Vec<usize>>, current
     }
 
     // move down
-    let down: (usize, usize) = get_next_coord(current_position, Direction::South);
+    let down: (usize, usize) = get_next_coord(current_position, &Direction::South);
     match grid[down.0][down.1] {
         Object::EmptySpace => {
             match direction {
@@ -107,7 +109,7 @@ fn dfs_explore(grid: &Vec<Vec<Object>>,score_grid: &mut Vec<Vec<usize>>, current
     }
 
     // move east
-    let right: (usize, usize) = get_next_coord(current_position, Direction::East);
+    let right: (usize, usize) = get_next_coord(current_position, &Direction::East);
     match grid[right.0][right.1] {
         Object::EmptySpace => {
             match direction {
@@ -134,7 +136,7 @@ fn dfs_explore(grid: &Vec<Vec<Object>>,score_grid: &mut Vec<Vec<usize>>, current
     }
 
     // move west
-    let left: (usize, usize) = get_next_coord(current_position, Direction::West);
+    let left: (usize, usize) = get_next_coord(current_position, &Direction::West);
     match grid[left.0][left.1] {
         Object::EmptySpace => {
             match direction {
@@ -161,7 +163,7 @@ fn dfs_explore(grid: &Vec<Vec<Object>>,score_grid: &mut Vec<Vec<usize>>, current
     }
 }
 
-fn get_next_coord(coordinate: &(usize, usize), direction: Direction) -> (usize, usize) {
+pub fn get_next_coord(coordinate: &(usize, usize), direction: &Direction) -> (usize, usize) {
     match direction {
         Direction::North => (
             coordinate.0 - 1,
