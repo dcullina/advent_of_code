@@ -1,7 +1,7 @@
 use std::collections::{HashMap, HashSet};
 use std::usize::MAX;
 
-enum Direction {
+pub enum Direction {
     Up,
     Right,
     Left,
@@ -92,7 +92,7 @@ fn min_steps(
     }
 }
 
-fn get_next_coord_safely(
+pub fn get_next_coord_safely(
     grid: &HashSet<(usize, usize)>,
     current_pos: &(usize, usize),
     direction: &Direction,

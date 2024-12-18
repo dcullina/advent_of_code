@@ -8,5 +8,5 @@ fn main() {
     let input: &str = include_str!("../input.txt");
 
     println!("Part One: {:?}", part_one(input, GRID_DIM, NUM_BYTES));
-    println!("Part Two: {:?}", part_two(input));
+    println!("Part Two: {:?}", part_two(input, GRID_DIM, NUM_BYTES));
 }
