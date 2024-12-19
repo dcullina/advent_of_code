@@ -1,0 +1,9 @@
+r, wr, b, g, bwu, rb, gb, br
+
+bwurrg: 6
+
+b wurrg: 5
+false
+
+bwu rrg: 3
+bwurr g: 1

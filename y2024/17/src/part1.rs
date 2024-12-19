@@ -17,12 +17,6 @@ impl Machine3B<'_> {
         }
     }
 
-    pub fn reset_machine(&mut self) {
-        self.register_b = 0;
-        self.register_c = 0;
-        self.instruction_pointer = 0;
-    }
-
     pub fn run(&mut self) -> Option<usize> {
         while self.instruction_pointer < self.instruction_set.len() {
             let opcode: usize = self.instruction_set[self.instruction_pointer];

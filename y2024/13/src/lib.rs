@@ -1,4 +1,7 @@
-const PART_TWO_OFFSET: usize = 10000000000000;
+use rayon::prelude::*;
+
+const PART_TWO_OFFSET: usize = 10_000_000_000_000;
+const A_BUTTON_COST: isize = 3;
 
 pub fn part_one(input: &str) -> usize {
     let machines: Vec<Vec<(usize,usize)>> = input
@@ -20,7 +23,8 @@ pub fn part_one(input: &str) -> usize {
         })
         .collect();
 
-    machines.iter()
+    machines
+        .par_iter()
         .map(|machine| {
             calculate_cost(machine)
         })
@@ -42,7 +46,7 @@ fn calculate_cost(machine: &Vec<(usize, usize)>) -> usize {
         return 0;
     }
 
-    (a.unwrap() * 3 + b.unwrap()) as usize
+    (a.unwrap() * A_BUTTON_COST + b.unwrap()) as usize
 }
 
 fn check_division(numerator: isize, denominator: isize) -> Option<isize> {
@@ -81,7 +85,8 @@ pub fn part_two(input: &str) -> usize {
         })
         .collect();
 
-    machines.iter()
+    machines
+        .par_iter()
         .map(|machine| {
             calculate_cost(machine)
         })
