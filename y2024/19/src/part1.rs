@@ -1,6 +1,5 @@
-use chrono::Local;
 use rayon::prelude::*;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 
 pub fn part_one(input: &str) -> usize {
     let mut split_input = input.split("\n\n");
@@ -15,48 +14,34 @@ pub fn part_one(input: &str) -> usize {
         towel_orders.push(line);
     });
 
-    // let mut sum: usize = 0;
-    // let mut count: usize = 0;
-    // for towel_order in towel_orders {
-    //     println!("Inspecting towel order #: {:?}", count);
-    //     count += 1;
-    //     if check_if_possible(&towels, towel_order) {
-    //         sum += 1;
-    //     }
-    // }
-    // sum
-
     towel_orders
         .par_iter()
-        .filter(|towel| {
-            // println!("Inspecting towel order, {:?}", Local::now());
-            check_if_possible(&towels, towel)
+        .filter(|&towel_order| {
+            let mut previously_seen: HashMap<&str, bool> = HashMap::new();
+            check_if_possible(&towels, towel_order, &mut previously_seen)
         })
         .count()
 }
 
-fn check_if_possible(towels: &HashSet<&str>, towel_order: &str) -> bool {
-    // println!("{:?}", towel_order);
-    let mut end_i: usize = 0;
+fn check_if_possible<'a>(
+    towels: &HashSet<&'a str>,
+    towel_order: &'a str,
+    previously_seen: &mut HashMap<&'a str, bool>,
+) -> bool {
     let towel_order_len: usize = towel_order.len();
 
-    if towel_order_len <= 1 {
-        return towels.contains(towel_order);
-    }
+    for end in 1..=towel_order_len {
+        let front: &str = &towel_order[..end];
 
-    while end_i < towel_order_len {
-        let matching: &str = &towel_order[..=end_i];
-
-        if towels.contains(matching) {
-            if end_i == towel_order_len - 1 {
-                return true;
-            } else if check_if_possible(towels, &towel_order[end_i + 1..]) {
+        if towels.contains(front) {
+            let back = &towel_order[end..];
+            if back.is_empty() || check_if_possible(towels, back, previously_seen) {
+                previously_seen.insert(towel_order, true);
                 return true;
             }
         }
-
-        end_i += 1;
     }
 
+    previously_seen.insert(towel_order, false);
     false
 }
