@@ -28,6 +28,10 @@ fn check_if_possible<'a>(
     towel_order: &'a str,
     previously_seen: &mut HashMap<&'a str, bool>,
 ) -> bool {
+    if let Some(&result) = previously_seen.get(towel_order) {
+        return result;
+    }
+
     let towel_order_len: usize = towel_order.len();
 
     for end in 1..=towel_order_len {
