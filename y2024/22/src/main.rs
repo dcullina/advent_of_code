@@ -6,5 +6,5 @@ fn main() {
     let input: &str = include_str!("../input.txt");
 
     println!("Part One: {:?}", part_one::<NUM_NEW_SECRET_NUMBERS>(input));
-    println!("Part Two: {:?}", part_two(input));
+    println!("Part Two: {:?}", part_two::<NUM_NEW_SECRET_NUMBERS>(input));
 }

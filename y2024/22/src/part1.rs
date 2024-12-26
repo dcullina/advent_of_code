@@ -20,13 +20,8 @@ pub fn part_one<const NUM_NEW_SECRET_NUMBERS: usize>(input: &str) -> usize {
         .sum()
 }
 
-fn compute_next_secret(mut secret_number: usize) -> usize {
-    secret_number = secret_number ^ (secret_number << 6);
-    secret_number = secret_number.rem_euclid(MODULO_BY);
-
-    secret_number = secret_number ^ (secret_number >> 5);
-    secret_number = secret_number.rem_euclid(MODULO_BY);
-
-    secret_number = secret_number ^ (secret_number << 11);
-    secret_number.rem_euclid(MODULO_BY)
+pub fn compute_next_secret(mut secret_number: usize) -> usize {
+    secret_number = (secret_number ^ (secret_number << 6)).rem_euclid(MODULO_BY);
+    secret_number = (secret_number ^ (secret_number >> 5)).rem_euclid(MODULO_BY);
+    (secret_number ^ (secret_number << 11)).rem_euclid(MODULO_BY)
 }
