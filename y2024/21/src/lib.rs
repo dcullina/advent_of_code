@@ -1,5 +1,3 @@
-mod part1;
-mod part2;
+mod part12;
 
-pub use part1::part_one;
-pub use part2::part_two;
+pub use part12::part_one_two;

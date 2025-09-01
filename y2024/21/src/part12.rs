@@ -122,7 +122,7 @@ const DIRECTIONAL_PAD: Pad = {
     }
 };
 
-pub fn part_one<const NUM_PADS: usize>(input: &str) -> usize {
+pub fn part_one_two<const NUM_PADS: usize>(input: &str) -> usize {
     let mut previously_seen: HashMap<(Vec<char>, usize), usize> = HashMap::new(); // (start, end) --> distance
 
     input

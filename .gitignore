@@ -1,2 +1,8 @@
 **/target/
-input.txt
+**/input.txt
+**/.DS_Store
+**/.vscode
+/build
+/.cache
+compile_commands.json
+.envrc
