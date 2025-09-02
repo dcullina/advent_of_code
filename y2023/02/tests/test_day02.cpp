@@ -9,6 +9,6 @@ TEST(Day02, Part1) {
 }
 
 TEST(Day02, Part2) {
-  std::string input = load_file("y2023/02/tests/example_input_2.txt");
-  EXPECT_EQ(part_2(input), "-1");
+  std::string input = load_file("y2023/02/tests/example_input_1.txt");
+  EXPECT_EQ(part_2(input), "2286");
 }

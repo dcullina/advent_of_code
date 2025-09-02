@@ -81,10 +81,8 @@ std::string part_1(const std::string &input) {
     ColorCounts counts = parse_colors(line);
     int id = get_id_from_line(line);
 
-    if (check_if_possible(counts)) {
+    if (check_if_possible(counts))
       sum += id;
-    } else {
-    }
   }
 
   return std::to_string(sum);
