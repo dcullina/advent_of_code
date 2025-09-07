@@ -1,5 +1,8 @@
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 4.1.1)
 project(AdventOfCode LANGUAGES CXX)
+
+set(CMAKE_C_COMPILER ${CC})
+set(CMAKE_CXX_COMPILER ${CXX})
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -13,18 +16,20 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
+include(cmake/AocDay.cmake)
+
 enable_testing()
 
 add_compile_options(
     -Wall
     -Wextra
     -Wpedantic
-    -Werror
+    # -Werror
     -Wno-error=unused-variable
     -Wno-error=unused-parameter
 )
 
 add_subdirectory(libs/cpp)
 
-add_subdirectory(y2023)
+add_subdirectory(2023)
 add_subdirectory(tests)

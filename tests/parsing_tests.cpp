@@ -1,5 +1,3 @@
 #include <gtest/gtest.h>
 
-TEST(Dummy, Placeholder) {
-    EXPECT_TRUE(true);
-}
+TEST(Parsing, Placeholder) { EXPECT_TRUE(true); }

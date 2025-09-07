@@ -1,21 +1,21 @@
 default: build
 
 configure:
-    cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
+    cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
-build:
+build: configure
     cmake --build build
 
-rebuild: clean configure build
+rebuild: clean build
 
 test-lib: build
     ./build/tests/aoc_lib_tests
 
-run-day day: build
-    ./build/y2023/{{day}}/day{{day}}
+run year day: build
+    ./build/{{year}}/{{day}} {{year}}/{{day}}/input.txt
 
-test-day day: build
-    ./build/y2023/{{day}}/test_day{{day}}
+test year day: build
+    ctest --test-dir build -R {{year}}_{{day}} -V
 
 clean:
     rm -rf ./build

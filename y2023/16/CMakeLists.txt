@@ -1,1 +1,0 @@
-add_executable(day16 main.cpp)
