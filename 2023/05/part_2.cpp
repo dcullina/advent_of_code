@@ -16,7 +16,7 @@ std::string part_2(const std::string &input) {
   }
 
   llVector seeds = parse_seeds(lines[0]);
-  std::println("Seeds {}", seeds);
+  // std::println("Seeds {}", seeds);
 
   std::vector<std::vector<Mapping>> map_vector;
 
@@ -48,12 +48,12 @@ std::string part_2(const std::string &input) {
        i += 2) { // skip every other seed since it will be the range
     std::int64_t range = seeds[i + 1];
 
-    std::println("Starting process_seed_2 with side_a={} and side_b={}",
-                 seeds[i], seeds[i] + range - 1);
+    // std::println("Starting process_seed_2 with side_a={} and side_b={}",
+    //              seeds[i], seeds[i] + range - 1);
     process_seed_2(map_vector, minimum, size_t(0), seeds[i],
                    seeds[i] + range - 1);
 
-    std::println("Finished {} seed pair", ++counter);
+    // std::println("Finished {} seed pair", ++counter);
   }
 
   return std::to_string(minimum);
@@ -89,8 +89,8 @@ void process_seed_2(const std::vector<std::vector<Mapping>> &map_vector,
     std::int64_t destination_high_end =
         mapping.destination + (overlap_high - mapping.source);
 
-    std::println("Going on to depth={} with low_dest={} and high_dest={}",
-                 depth, destination_low_end, destination_high_end);
+    // std::println("Going on to depth={} with low_dest={} and high_dest={}",
+    //              depth, destination_low_end, destination_high_end);
 
     covered_ranges.emplace_back(overlap_low, overlap_high);
     process_seed_2(map_vector, minimum, depth + 1, destination_low_end,

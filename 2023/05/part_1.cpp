@@ -17,7 +17,7 @@ std::string part_1(const std::string &input) {
   }
 
   llVector seeds = parse_seeds(lines[0]);
-  std::println("Seeds {}", seeds);
+  // std::println("Seeds {}", seeds);
 
   std::vector<std::vector<Mapping>> map_vector;
 
@@ -92,7 +92,7 @@ std::vector<Mapping> parse_mapping_entry(std::vector<std::string> lines,
     llVector numbers = parse_numbers(lines[i]);
 
     if (numbers.size() != 3) {
-      std::println("Line: {}", lines[i]);
+      // std::println("Line: {}", lines[i]);
       throw std::runtime_error(std::format(
           "Invalid parsing of mapping line, found {} numbers", numbers.size()));
     }
